@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import HomePage from './views/HomePage.vue'
 import "./styles/reset.css";
+import "./styles/colors.css";
+import "./styles/fonts.css";
+import "./styles/styles.css";
 
 const routes = [
   { path: '/', redirect: '/home' },

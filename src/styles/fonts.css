@@ -1,7 +1,34 @@
 @font-face {
-  font-family: 'Press Start 2P';
+  font-family: "Press Start 2P";
   font-style: normal;
   font-weight: 400;
-  src: url('/src/fonts/PressStart2P-Regular.ttf') format('truetype');
+  src: url("/src/fonts/PressStart2P-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "PixelMplus12-Bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/fonts/PixelMplus12-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PixelMplus12-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/fonts/PixelMplus12-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PixelMplus10-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/fonts/PixelMplus10-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PixelMplus10-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/fonts/PixelMplus10-Bold.ttf") format("truetype");
+}
