@@ -72,6 +72,24 @@ const isPortfolioOpen = ref(false);
 const isDiplomaOpen = ref(false);
 const isHomeOpen = ref(false);
 
+function displayUserTime(){
+  const timeElement = document.getElementById("clock");
+  const now = new Date();
+
+  const options = {
+    hour : "numeric",
+    minute : "numeric",
+    // second : "numeric",
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  };
+
+  const formattedTime = now.toLocaleString("en-US", options);
+  timeElement.textContent = formattedTime;
+}
+
+window.onload = displayUserTime;
+setInterval(displayUserTime, 1000);
+
 function startButton() {
   isStartOpen.value = !isStartOpen.value;
 }
@@ -94,7 +112,7 @@ function homeOpen() {
 .taskbar {
   position: fixed;
   width: 100%;
-  height: 50px;
+  height: 30px;
   background: url("/src/icon/NavBar.svg") no-repeat center center;
   background-size: cover;
   display: flex;
@@ -107,7 +125,7 @@ function homeOpen() {
   justify-content: space-between;
   /* align-items: center; */
   width: 100%;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .taskbar-left {
@@ -122,24 +140,18 @@ function homeOpen() {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
 
 .buttons-small{
   display: flex;
   gap: 10px;
-  height: 40px;
-  border: none;
-  padding: 0;
-  margin: 0;
+  height: 100%;
 }
 
 .start-button{
   display: flex;
-  width: 117px;
-  height: 40px;
-  border: none;
-  padding: 0;
-  margin: 0;
+  height: 100%;
 }
 
 .start-button img {
@@ -163,5 +175,10 @@ function homeOpen() {
 .taskbar-right {
   display: flex;
   align-items: center;
+}
+
+span{
+  color: var(--main-text-color);
+  font-size: 9.3px;
 }
 </style>
