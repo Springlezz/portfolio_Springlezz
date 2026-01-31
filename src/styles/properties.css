@@ -1,0 +1,21 @@
+:root{
+    --element-spacing: 8px;
+  --border-width: 1px;
+  --border-raised-outer:
+    inset -1px -1px var(--window-frame), inset 1px 1px var(--button-highlight);
+  --border-raised-inner:
+    inset -2px -2px var(--button-shadow), inset 2px 2px var(--button-face);
+  --border-sunken-outer:
+    inset -1px -1px var(--button-highlight), inset 1px 1px var(--window-frame);
+  --border-sunken-inner:
+    inset -2px -2px var(--button-face), inset 2px 2px var(--button-shadow);
+
+  --border-window-outer:
+    inset -1px -1px var(--window-frame), inset 1px 1px var(--button-face);
+  --border-window-inner:
+    inset -2px -2px var(--button-shadow), inset 2px 2px var(--button-highlight);
+
+  --border-field:
+    inset -1px -1px var(--button-highlight), inset 1px 1px var(--button-shadow),
+    inset -2px -2px var(--button-face), inset 2px 2px var(--window-frame);
+}

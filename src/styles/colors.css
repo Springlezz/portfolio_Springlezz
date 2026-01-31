@@ -1,4 +1,17 @@
-:root{
-    --main-text-color: #000080;
-    --loading-color: #2B1C5C;
+:root {
+  --main-text-color: #000080;
+  --loading-color: #2b1c5c;
+
+  --surface: #FDF1FD;
+  --surface-with-text: #F7E1F8;
+
+  --button-highlight: #ffffff;
+  --button-face: #dfdfdf;
+  --button-shadow: #808080;
+  --window-frame: #0a0a0a;
+
+  --dialog-blue: #91F3E4;
+
+  --dialog-gray: #5c9b92;
+  --link-blue: #0000ff;
 }

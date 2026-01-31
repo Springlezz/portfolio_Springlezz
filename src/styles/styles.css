@@ -1,3 +1,4 @@
+/* ====== FOR ALL ======= */
 body {
   font-family: "Press Start 2P", monospace;
   background-image: url("/src/background/background.png");
@@ -7,3 +8,69 @@ body {
   background-attachment: fixed;
   background-color: var(--loading-color);
 }
+
+button,
+label,
+input,
+textarea,
+select,
+option,
+ul.tree-view,
+.window,
+.title-bar {
+  font-family: "PixelMplus10-Regular", Arial;
+  font-size: 11px;
+}
+
+/* ====== WINDOWS ======= */
+
+.window-fade-enter,
+.window-fade-leave-active{
+  opacity: 0;
+}
+
+.window-fade-enter-active,
+.window-fade-leave-active{
+  transition: opacity .5s ease;
+}
+
+.window-body {
+  margin: var(--element-spacing);
+}
+
+.window {
+  position: absolute;
+  box-shadow: var(--border-window-outer);
+  background: var(--surface);
+  padding: 3px;
+}
+
+.window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: var(--border-window-inner);
+}
+
+/* ====== TASKBAR ======= */
+
+
+/* ====== STATUSBAR ======= */
+
+.status-bar {
+  margin: 0px 1px;
+  display: flex;
+  gap: 1px;
+}
+
+.status-bar-field {
+  box-shadow:
+    inset -1px -1px #dfdfdf,
+    inset 1px 1px #808080;
+  flex-grow: 1;
+  padding: 2px 3px;
+  margin: 0;
+}
+
+/* ====== WINDOWS ======= */
