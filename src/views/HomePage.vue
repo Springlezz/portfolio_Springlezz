@@ -54,7 +54,28 @@
   <transition name="window-fade">
     <div
       class="window"
-      :class="{ maximized: isMaximized, hidden: isClosed }"  :style="windowStyle" 
+      :class="{ maximized: isMaximized, hidden: isClosed }"  :style="window1Style" 
+    >
+      <div class="title-bar" @mousedown="startMove">
+        <img src="/src/icon/notepad.svg" />
+        <div class="title-bar-text">{{ $t("title-main-window") }}</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimaze"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body"></div>
+      <div class="status-bar">
+        <p class="status-bar-field">Press F1 for help</p>
+      </div>
+    </div>
+  </transition>
+
+  <transition name="window-fade">
+    <div
+      class="window"
+      :class="{ maximized: isMaximized, hidden: isClosed }"  :style="window2Style" 
     >
       <div class="title-bar" @mousedown="startMove">
         <img src="/src/icon/notepad.svg" />
@@ -95,7 +116,15 @@ const isDiplomaOpen = ref(false);
 const isHomeOpen = ref(false);
 
 const {x, y, startMove} = useMovableWindows(50,50);
-const windowStyle = computed(() => ({
+const window1Style = computed(() => ({
+  left: x.value + "px",
+  top: y.value + "px",
+  width: "620px",
+  height: "500px",
+}));
+
+const {x, y, startMove} = useMovableWindows(50,50);
+const window2Style = computed(() => ({
   left: x.value + "px",
   top: y.value + "px",
   width: "620px",
