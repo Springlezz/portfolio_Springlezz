@@ -32,3 +32,10 @@
   font-weight: 400;
   src: url("/src/fonts/PixelMplus10-Bold.ttf") format("truetype");
 }
+
+@font-face{
+  font-family: "PixelifySans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/fonts/PixelifySans-VariableFont_wght.ttf") format("truetype");
+}

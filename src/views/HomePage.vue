@@ -2,61 +2,42 @@
   <header class="taskbar">
     <div class="taskbar-content">
       <nav class="taskbar-left">
-        <button
-          class="start-button"
-          :class="{ active: isStartOpen, inactive: !isStartOpen }"
-          @click="startButton"
-        >
-          <img :src="isStartOpen ? startOnIcon : startOffIcon" alt="Start" />
+        <button>
+          <img src="/src/icon/taskbar/computer.svg" />
+          <p>{{ $t("start-btn") }}</p>
         </button>
 
-        <div class="buttons-small">
-          <button
-            class="portfolio-button"
-            :class="{ active: isPortfolioOpen, inactive: !isPortfolioOpen }"
-            @click="portfolioButton"
-          >
-            <img
-              :src="isPortfolioOpen ? portfolioOnIcon : portfolioOffIcon"
-              alt="portfolio"
-            />
-          </button>
+        <button>
+          <img src="/src/icon/taskbar/computer.svg" />
+          <p>{{ $t("portfolio-btn") }}</p>
+        </button>
 
-          <button
-            class="diploma-button"
-            :class="{ active: isDiplomaOpen, inactive: !isDiplomaOpen }"
-            @click="diplomaOpen"
-          >
-            <img
-              :src="isDiplomaOpen ? diplomaOnIcon : diplomaOffIcon"
-              alt="diploma"
-            />
-          </button>
+        <button>
+          <img src="/src/icon/taskbar/computer.svg" />
+          <p>{{ $t("diploms-btn") }}</p>
+        </button>
 
-          <button
-            class="home-button"
-            :class="{ active: isHomeOpen, inactive: !isHomeOpen }"
-            @click="homeOpen"
-          >
-            <img :src="isHomeOpen ? homeOnIcon : homeOffIcon" alt="home" />
-          </button>
-        </div>
+        <button>
+          <img src="/src/icon/taskbar/computer.svg" />
+          <p>Springlezz</p>
+        </button>
       </nav>
 
       <div class="taskbar-right">
         <span id="clock">Timer</span>
       </div>
+
     </div>
   </header>
 
   <div class="item-container"></div>
 
+  <!-- Общее окно -->
   <transition name="window-fade">
     <div
       class="window"
-      :class="{ maximized: isMaximized, hidden: isClosed }"  :style="window1Style" 
-    >
-      <div class="title-bar" @mousedown="startMove">
+      :class="{ maximized: isMaximized, hidden: isClosed }"  :style="window1Style">
+      <div class="title-bar" @mousedown="win1.startMove">
         <img src="/src/icon/notepad.svg" />
         <div class="title-bar-text">{{ $t("title-main-window") }}</div>
         <div class="title-bar-controls">
@@ -67,28 +48,28 @@
       </div>
       <div class="window-body"></div>
       <div class="status-bar">
-        <p class="status-bar-field">Press F1 for help</p>
+        <p class="status-bar-field">{{ $t("objects-main-window") }}</p>
       </div>
     </div>
   </transition>
+
 
   <transition name="window-fade">
     <div
       class="window"
       :class="{ maximized: isMaximized, hidden: isClosed }"  :style="window2Style" 
     >
-      <div class="title-bar" @mousedown="startMove">
+      <div class="title-bar" @mousedown="win2.startMove">
         <img src="/src/icon/notepad.svg" />
-        <div class="title-bar-text">{{ $t("title-main-window") }}</div>
+        <div class="title-bar-text">{{ $t("who_i_am") }}</div>
         <div class="title-bar-controls">
           <button aria-label="Minimaze"></button>
           <button aria-label="Maximize"></button>
           <button aria-label="Close"></button>
         </div>
       </div>
-      <div class="window-body"></div>
-      <div class="status-bar">
-        <p class="status-bar-field">Press F1 for help</p>
+      <div class="window-body" style="white-space: pre-line;">
+        <p>{{ $t("who_i_am_description") }}</p>
       </div>
     </div>
   </transition>
@@ -96,39 +77,22 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import { useMovableWindows } from "../../scripts/movableWindows";
+import { useMovableWindows } from "../scripts/movableWindows";
 
-import startOnIcon from "/src/icon/start-pressed.svg";
-import startOffIcon from "/src/icon/start-normal.svg";
-
-import portfolioOnIcon from "/src/icon/portfolio-pressed.svg";
-import portfolioOffIcon from "/src/icon/portfolio-unpressed.svg";
-
-import diplomaOnIcon from "/src/icon/diploma-pressed.svg";
-import diplomaOffIcon from "/src/icon/diploma-unpressed.svg";
-
-import homeOnIcon from "/src/icon/home-pressed.svg";
-import homeOffIcon from "/src/icon/home-unpressed.svg";
-
-const isStartOpen = ref(false);
-const isPortfolioOpen = ref(false);
-const isDiplomaOpen = ref(false);
-const isHomeOpen = ref(false);
-
-const {x, y, startMove} = useMovableWindows(50,50);
+const win1 = useMovableWindows(50, 50);
 const window1Style = computed(() => ({
-  left: x.value + "px",
-  top: y.value + "px",
+  left: win1.x.value + "px",
+  top: win1.y.value + "px",
   width: "620px",
   height: "500px",
 }));
 
-const {x, y, startMove} = useMovableWindows(50,50);
+const win2 = useMovableWindows(500, 120);
 const window2Style = computed(() => ({
-  left: x.value + "px",
-  top: y.value + "px",
-  width: "620px",
-  height: "500px",
+  left: win2.x.value + "px",
+  top: win2.y.value + "px",
+  width: "420px",
+  height: "200px",
 }));
 
 function displayUserTime() {
@@ -148,21 +112,6 @@ function displayUserTime() {
 window.onload = displayUserTime;
 setInterval(displayUserTime, 10000);
 
-function startButton() {
-  isStartOpen.value = !isStartOpen.value;
-}
-
-function portfolioButton() {
-  isPortfolioOpen.value = !isPortfolioOpen.value;
-}
-
-function diplomaOpen() {
-  isDiplomaOpen.value = !isDiplomaOpen.value;
-}
-
-function homeOpen() {
-  isHomeOpen.value = !isHomeOpen.value;
-}
 </script>
 
 <style scoped>
@@ -186,45 +135,33 @@ function homeOpen() {
 
 .taskbar-left {
   display: flex;
-  gap: 10px;
+  gap: 6px;
   align-items: center;
 }
 
 .taskbar-left button {
-  background: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  padding: 2px;
+  gap: 6px;
+  background: var(--surface-with-text);
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid var(--button-shadow);
+  border-right: 2px solid var(--button-shadow);
+  padding: 2px 6px;
+  cursor: pointer;
+  background: var(--surface-with-text);
 }
 
-.buttons-small {
-  display: flex;
-  gap: 10px;
-  height: 100%;
-}
-
-.start-button {
-  display: flex;
-  height: 100%;
-}
-
-.start-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.taskbar-left button:focus {
-  outline: none;
-}
-
-.taskbar-left button img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
+.taskbar-left button:active {
+  background: var(--surface-active);
+  border-top: 2px solid var(--button-shadow);
+  border-left: 2px solid var(--button-shadow);
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  background: var(--surface-active);
 }
 
 .taskbar-right {
@@ -236,86 +173,4 @@ span {
   color: var(--main-text-color);
   font-size: 9.3px;
 }
-
-
-
-
-
-
-
-.title-bar {
-  background: var(--dialog-blue);
-  padding: 3px 2px 3px 3px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title-bar.inactive {
-  background: var(--dialog-gray);
-}
-
-.title-bar-text {
-  font-weight: bold;
-  color: var(--main-text-color);
-  letter-spacing: 0;
-  margin-right: 24px;
-}
-
-.title-bar-controls {
-  display: flex;
-}
-
-.title-bar-controls button {
-  padding: 0;
-  border: none;
-
-  display: block;
-  min-width: 16px;
-  min-height: 14px;
-}
-
-.title-bar-controls button:active {
-  padding: 0;
-}
-
-.title-bar-controls button:focus {
-  outline: none;
-}
-
-.title-bar-controls button {
-  width: 16px;
-  height: 14px;
-  display: block;
-  background-color: var(--button-face);
-  cursor: pointer;
-
-  border-top: 2px solid var(--button-highlight);
-  border-left: 2px solid var(--button-highlight);
-  border-bottom: 2px solid var(--button-shadow);
-  border-right: 2px solid var(--button-shadow);
-}
-
-.title-bar-controls button[aria-label="Minimaze"] {
-  background-image: url("src/icon/minimaze.svg");
-  background-repeat: no-repeat;
-  background-position: top 5px left 1.8px;
-}
-
-.title-bar-controls button[aria-label="Maximize"] {
-  background-image: url("src/icon/maximize.svg");
-  background-repeat: no-repeat;
-  background-position: top 1px left 1.8px;
-}
-
-.title-bar-controls button[aria-label="Close"] {
-  margin-left: 2px;
-  background-image: url("src/icon/close.svg");
-  background-repeat: no-repeat;
-  background-position: top 1px left 1.8px;
-}
-
-
-
-
 </style>

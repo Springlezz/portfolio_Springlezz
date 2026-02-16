@@ -15,10 +15,11 @@ export function useMovableWindows(startX = 50, startY = 50) {
 
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseup", stopMove);
+    
   }
 
   function onMove(e) {
-    if (!isMoving) return;
+    if (!isMoving) return
     x.value = e.clientX - offsetX;
     y.value = e.clientY - offsetY;
   }

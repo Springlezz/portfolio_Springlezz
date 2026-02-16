@@ -1,5 +1,5 @@
 :root{
-    --element-spacing: 8px;
+  --element-spacing: 8px;
   --border-width: 1px;
   --border-raised-outer:
     inset -1px -1px var(--window-frame), inset 1px 1px var(--button-highlight);
